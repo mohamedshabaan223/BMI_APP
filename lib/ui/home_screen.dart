@@ -1,4 +1,6 @@
+import 'dart:math';
 import 'package:bmi_app/common/colors_manger.dart';
+import 'package:bmi_app/ui/result_screen.dart';
 import 'package:bmi_app/widget/custom_appbar.dart';
 import 'package:bmi_app/widget/custom_counter.dart';
 import 'package:bmi_app/widget/custom_gender.dart';
@@ -14,8 +16,8 @@ class HomeScreen extends StatefulWidget {
 
 class _HomeScreenState extends State<HomeScreen> {
   bool isMale = true;
-  double height = 0.0;
-  int weight = 30;
+  double height = 0;
+  int weight = 80;
   int age = 15;
   @override
   Widget build(BuildContext context) {
@@ -99,7 +101,9 @@ class _HomeScreenState extends State<HomeScreen> {
       ),
       bottomNavigationBar: InkWell(
         onTap: () {
-          
+          Navigator.of(context).push(MaterialPageRoute(builder: (_)=> ResultScreen(
+            bmiValue:weight/pow((height/100),2),
+          )));
         },
         child: Container(
           alignment: Alignment.center,
