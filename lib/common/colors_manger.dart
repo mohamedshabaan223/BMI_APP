@@ -7,4 +7,5 @@ class ColorsManger {
   static const Color appBarColor = Color(0xff24263B);
   static const Color backgroundColor = Color(0xff1C2135);
   static const Color floatingActionButtonColor = Color(0xff8B8C9E);
+  static const Color green = Color(0xff21BF73);
 }

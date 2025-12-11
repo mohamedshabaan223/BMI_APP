@@ -2,7 +2,10 @@ import 'package:bmi_app/common/colors_manger.dart';
 import 'package:flutter/material.dart';
 
 class CustomHeight extends StatelessWidget {
-  const CustomHeight({super.key});
+const CustomHeight({super.key , required this.heihgt , required this.onChanged});
+ final double heihgt ; 
+ final void Function(double)? onChanged;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -20,7 +23,7 @@ class CustomHeight extends StatelessWidget {
             TextSpan(
               children: [
                 TextSpan(
-                  text: '150',
+                  text: heihgt.toStringAsFixed(2),
                   style: TextStyle(
                     fontSize: 40,
                     fontWeight: FontWeight.w700,
@@ -39,8 +42,9 @@ class CustomHeight extends StatelessWidget {
             ),
           ),
           Slider(
-            value: 0.5,
-            onChanged: (value) {},
+            max: 300,
+            value: heihgt,
+            onChanged: onChanged,
             inactiveColor: ColorsManger.white,
             activeColor: ColorsManger.pink,
           ),

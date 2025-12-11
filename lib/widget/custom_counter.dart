@@ -3,9 +3,17 @@ import 'package:bmi_app/widget/custom_floating_action_button.dart';
 import 'package:flutter/material.dart';
 
 class CustomCounter extends StatelessWidget {
-  const CustomCounter({super.key, required this.label, required this.value});
+  const CustomCounter({
+    super.key,
+    required this.label,
+    required this.value,
+    required this.decrement,
+    required this.increment,
+  });
   final String label;
   final int value;
+  final void Function()? decrement;
+  final void Function()? increment;
 
   @override
   Widget build(BuildContext context) {
@@ -35,8 +43,18 @@ class CustomCounter extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                CustomFloatingActionButton(icon: Icons.remove),
-                CustomFloatingActionButton(icon: Icons.add),
+                CustomFloatingActionButton(
+                  icon: Icons.remove,
+                  keyValue: UniqueKey(),
+                  heroTag: '$label 1 ',
+                  onPressed: decrement,
+                ),
+                CustomFloatingActionButton(
+                  icon: Icons.add,
+                  keyValue: UniqueKey(),
+                  heroTag: '$label 2 ',
+                  onPressed: increment,
+                ),
               ],
             ),
           ],
